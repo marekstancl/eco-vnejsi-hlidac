@@ -1,0 +1,19 @@
+# GitHub vypíná plánované workflow ve veřejném repu po 60 dnech bez aktivity.
+# Jednou měsíčně commit = aktivita. Pojistka, kdyby selhal: healthchecks.io.
+name: keepalive
+on:
+  schedule:
+    - cron: "17 6 1 * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: |
+          date -u +%FT%TZ > posledni-beh.txt
+          git config user.name "eco-vnejsi-hlidac"
+          git config user.email "eco-vnejsi-hlidac@users.noreply.github.com"
+          git add posledni-beh.txt && git commit -m "keepalive $(date -u +%F)" && git push

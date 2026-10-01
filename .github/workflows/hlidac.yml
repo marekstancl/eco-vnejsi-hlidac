@@ -1,0 +1,35 @@
+# Hlidac eco mimo domov. Minuty 7 a 37 (ne :00/:30) - GitHub plánované běhy
+# na začátku hodiny zpožďuje nebo zahazuje. Zastavení pozná healthchecks.io.
+name: hlidac
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: hlidac
+  cancel-in-progress: false
+jobs:
+  hlidac:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: stav.json
+          key: stav-${{ github.run_id }}
+          restore-keys: stav-
+      - name: Kontrola webů a Hetzneru
+        run: python3 hlidac.py
+        env:
+          TELEGRAM_ALERT_BOT_TOKEN: ${{ secrets.TELEGRAM_ALERT_BOT_TOKEN }}
+          TELEGRAM_ALERT_CHAT_ID: ${{ secrets.TELEGRAM_ALERT_CHAT_ID }}
+          HCLOUD_READ_TOKEN: ${{ secrets.HCLOUD_READ_TOKEN }}
+          HC_VNEJSI_HLIDAC_URL: ${{ secrets.HC_VNEJSI_HLIDAC_URL }}
+      - if: always() && hashFiles('stav.json') != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: stav.json
+          key: stav-${{ github.run_id }}
