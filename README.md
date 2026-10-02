@@ -24,6 +24,13 @@ grace 1 h). Chyba = ping `/fail`. Když GitHub workflow zastaví, healthchecks p
 Řádek do `weby.json`: `url`, `projekt`, `sluzba`, `host` (kde web běží), `kody` (např. `[200]`,
 MCP za přihlášením `[401]`). Push → testy → od dalšího běhu se hlídá.
 
+Adresa, kterou vědomě nehlídáme (vývoj za Cloudflare Access), má pole `nehlidat` s důvodem.
+**Každá adresa vystavená přes Cloudflare tunel musí být ve `weby.json`** – hlídaná, nebo s `nehlidat`.
+Kontroluje to denně `scripts/public-webs-check.sh` v repu services (eco-dev, token Cloudflare jen
+pro čtení, omezený na IP domova) a chybějící adresu ohlásí.
+- Web hostovaný mimo Cloudflare tunel (vlastní DNS, jiná služba): pole `mimo_tunel` s důvodem – kontrola ho pak nehlásí jako „navíc".
+- Hvězdičková adresa v tunelu (`*.domena`): řádek `https://*.domena/` s `nehlidat`.
+
 ## Server, který má v Hetzneru běžet trvale
 Štítek `eco_trvaly=ano` (`hcloud server add-label <server> eco_trvaly=ano`). Bez něj je každý
 server starší než 6 h hlášen jako sirotek.

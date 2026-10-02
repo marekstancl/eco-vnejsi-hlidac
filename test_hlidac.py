@@ -86,6 +86,13 @@ class TestWeby(unittest.TestCase):
         self.assertIn("TimeoutError", s.zpravy[0])
 
 
+class TestNehlidat(unittest.TestCase):
+    def test_nehlidany_web_se_nezkousi(self):
+        s = Svet(weby={"https://d.cz/": 502})
+        w = {"url": "https://d.cz/", "projekt": "d", "sluzba": "d", "host": "eco-dev", "kody": [], "nehlidat": "vyvoj"}
+        self.assertEqual(s.beh([w], {})[0], {})
+
+
 class TestEpizoda(unittest.TestCase):
     def setUp(self):
         self.s = Svet(weby={WEB["url"]: 502})
@@ -184,6 +191,7 @@ class TestFormat(unittest.TestCase):
         for w in weby:
             self.assertTrue(w["url"].startswith("https://"))
             self.assertTrue(set(w) >= {"url", "projekt", "sluzba", "host", "kody"})
+            self.assertTrue(w.get("nehlidat") or w["kody"], w["url"])  # hlidany musi mit kody
 
 
 if __name__ == "__main__":

@@ -170,6 +170,8 @@ def beh(weby, stav, ted, token, hc_url, otevri=urllib.request.urlopen, spi=time.
     posli = posli or (lambda t: posli_telegram(t, otevri))
     problemy, chyba_hlidace = {}, None
     for w in weby:
+        if w.get("nehlidat"):  # vedome vyrazeny (duvod v poli), jen pro inventurni kontrolu
+            continue
         chyba = zkontroluj_web(w, otevri, spi)
         if chyba:
             problemy[f"web:{w['url']}"] = problem_webu(w, chyba)
