@@ -1,19 +1,30 @@
-# Hlidac eco mimo domov. Minuty 7 a 37 (ne :00/:30) - GitHub plánované běhy
-# na začátku hodiny zpožďuje nebo zahazuje. Zastavení pozná healthchecks.io.
+# Hlidac eco mimo domov - kontrola kazdych 30 min.
+# Plánované běhy GitHub (free) spouští jen jednou za 3-5 h (změřeno 1.-4. 10. 2026), proto:
+# jeden běh = smyčka kontrol po 30 min (~5 h), na konci sám spustí další běh (workflow_dispatch
+# z GITHUB_TOKEN GitHub povoluje). Plánovaný běh zůstává jako záchrana, kdyby se řetěz přerušil.
+# Souběh hlídá concurrency: běží jeden, čeká nejvýš jeden. Zastavení řetězu: Actions → hlidac →
+# Disable workflow (obyčejné Cancel nestačí - krok „Další běh“ běží i po zrušení). Stav (stav.json)
+# se do cache ukládá až na konci běhu; tvrdý pád runneru může vést k jedné opakované zprávě.
+# Zastavení pozná healthchecks.io (ping z každé kontroly).
 name: hlidac
 on:
   schedule:
     - cron: "7,37 * * * *"
   workflow_dispatch:
+    inputs:
+      delka:
+        description: "Délka smyčky v sekundách (test: 60 = jedna kontrola)"
+        default: "19800"
 permissions:
   contents: read
+  actions: write   # jen pro spuštění dalšího běhu (gh workflow run)
 concurrency:
   group: hlidac
   cancel-in-progress: false
 jobs:
   hlidac:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
@@ -21,9 +32,17 @@ jobs:
           path: stav.json
           key: stav-${{ github.run_id }}
           restore-keys: stav-
-      - name: Kontrola webů a Hetzneru
-        run: python3 hlidac.py
+      - name: Kontroly webů a Hetzneru (každých 30 min)
+        run: |
+          [[ "$DELKA" =~ ^[0-9]{1,5}$ ]] && (( DELKA <= 19800 )) || DELKA=19800   # vic = timeout jobu, retez by se pretrhl
+          konec=$(( $(date +%s) + DELKA ))
+          while :; do
+            python3 hlidac.py || echo "::warning::kontrola skončila kódem $?"
+            (( $(date +%s) + 1800 < konec )) || break
+            sleep 1800
+          done
         env:
+          DELKA: ${{ inputs.delka || '19800' }}
           TELEGRAM_ALERT_BOT_TOKEN: ${{ secrets.TELEGRAM_ALERT_BOT_TOKEN }}
           TELEGRAM_ALERT_CHAT_ID: ${{ secrets.TELEGRAM_ALERT_CHAT_ID }}
           HCLOUD_READ_TOKEN: ${{ secrets.HCLOUD_READ_TOKEN }}
@@ -33,3 +52,8 @@ jobs:
         with:
           path: stav.json
           key: stav-${{ github.run_id }}
+      - name: Další běh (řetěz)
+        if: always() && github.ref == 'refs/heads/main'
+        run: gh workflow run hlidac.yml --ref main --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}
