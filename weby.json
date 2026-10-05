@@ -4,7 +4,7 @@
   {"url": "https://lisa.waninvestment.cz/", "projekt": "wan", "sluzba": "lisa-ui", "host": "eco-prod", "kody": [200]},
   {"url": "https://lisa.waninvestment.cz/api/v1/health", "projekt": "wan", "sluzba": "lisa-api", "host": "eco-prod", "kody": [200]},
   {"url": "https://invoice.aidlab.dev/", "projekt": "myinvoice", "sluzba": "myinvoice-web", "host": "eco-prod", "kody": [200]},
-  {"url": "https://brain-mcp.aidlab.dev/mcp", "projekt": "vulcan-memory", "sluzba": "brain-mcp", "host": "eco-prod", "kody": [401]},
+  {"url": "https://brain-mcp.aidlab.dev/mcp", "projekt": "vulcan-memory", "sluzba": "brain-mcp", "host": "eco-dev", "kody": [401]},
   {"url": "https://myinvoice-mcp.aidlab.dev/mcp", "projekt": "myinvoice", "sluzba": "myinvoice-mcp", "host": "eco-prod", "kody": [401]},
   {"url": "https://telegram-mcp.aidlab.dev/mcp", "projekt": "telegram", "sluzba": "telegram-mcp", "host": "eco-prod", "kody": [401]},
   {"url": "https://gmail-mcp.aidlab.dev/mcp", "projekt": "gmail-mcp", "sluzba": "gmail-mcp", "host": "eco-dev", "kody": [401]},
