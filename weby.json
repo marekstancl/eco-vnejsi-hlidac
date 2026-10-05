@@ -7,6 +7,7 @@
   {"url": "https://brain-mcp.aidlab.dev/mcp", "projekt": "vulcan-memory", "sluzba": "brain-mcp", "host": "eco-prod", "kody": [401]},
   {"url": "https://myinvoice-mcp.aidlab.dev/mcp", "projekt": "myinvoice", "sluzba": "myinvoice-mcp", "host": "eco-prod", "kody": [401]},
   {"url": "https://telegram-mcp.aidlab.dev/mcp", "projekt": "telegram", "sluzba": "telegram-mcp", "host": "eco-prod", "kody": [401]},
+  {"url": "https://gmail-mcp.aidlab.dev/mcp", "projekt": "gmail-mcp", "sluzba": "gmail-mcp", "host": "eco-dev", "kody": [401]},
   {"url": "https://cicero.aidlab.dev/", "projekt": "cicero", "sluzba": "cicero.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
   {"url": "https://soustonamiru.aidlab.dev/", "projekt": "soustonamiru", "sluzba": "soustonamiru.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
   {"url": "https://krok.aidlab.dev/", "projekt": "krok", "sluzba": "krok.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
