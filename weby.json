@@ -8,6 +8,7 @@
   {"url": "https://myinvoice-mcp.aidlab.dev/mcp", "projekt": "myinvoice", "sluzba": "myinvoice-mcp", "host": "eco-prod", "kody": [401]},
   {"url": "https://telegram-mcp.aidlab.dev/mcp", "projekt": "telegram", "sluzba": "telegram-mcp", "host": "eco-prod", "kody": [401]},
   {"url": "https://gmail-mcp.aidlab.dev/mcp", "projekt": "gmail-mcp", "sluzba": "gmail-mcp", "host": "eco-dev", "kody": [401]},
+  {"url": "https://share.aidlab.dev/healthz", "projekt": "share", "sluzba": "share-web", "host": "eco-dev", "kody": [200]},
   {"url": "https://litellm.aidlab.dev/v1/models", "projekt": "litellm", "sluzba": "litellm-pro-cowork", "host": "eco-dev", "kody": [403]},
   {"url": "https://cicero.aidlab.dev/", "projekt": "cicero", "sluzba": "cicero.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
   {"url": "https://soustonamiru.aidlab.dev/", "projekt": "soustonamiru", "sluzba": "soustonamiru.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
