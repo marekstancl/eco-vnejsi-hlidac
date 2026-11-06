@@ -20,5 +20,6 @@
   {"url": "https://acta.aidlab.dev/", "projekt": "acta", "sluzba": "acta.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
   {"url": "https://cowork.aidlab.dev/", "projekt": "cowork", "sluzba": "cowork.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
   {"url": "https://docs.aidlab.dev/", "projekt": "docs", "sluzba": "docs.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
-  {"url": "https://asistent.aidlab.dev/", "projekt": "asistent", "sluzba": "asistent.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"}
+  {"url": "https://asistent.aidlab.dev/", "projekt": "asistent", "sluzba": "asistent.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
+  {"url": "https://aidlab.dev/", "projekt": "aidlab", "sluzba": "aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"}
 ]
