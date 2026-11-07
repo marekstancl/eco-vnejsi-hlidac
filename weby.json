@@ -21,5 +21,6 @@
   {"url": "https://cowork.aidlab.dev/", "projekt": "cowork", "sluzba": "cowork.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
   {"url": "https://docs.aidlab.dev/", "projekt": "docs", "sluzba": "docs.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
   {"url": "https://asistent.aidlab.dev/", "projekt": "asistent", "sluzba": "asistent.aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
-  {"url": "https://aidlab.dev/", "projekt": "aidlab", "sluzba": "aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"}
+  {"url": "https://aidlab.dev/", "projekt": "aidlab", "sluzba": "aidlab.dev", "host": "eco-dev", "kody": [], "nehlidat": "vývoj (tunel homelab na eco-dev), za Cloudflare Access - zákazníci ho nepoužívají"},
+  {"url": "https://trading.aidlab.dev/ui/", "projekt": "trading", "sluzba": "trading-ui", "host": "eco-dev", "kody": [], "nehlidat": "Soukromá aplikace pouze pro PM za Cloudflare Access; veřejná sonda by ověřila jen přihlášení. Backend hlídá lokální /health služby trading-app."}
 ]
